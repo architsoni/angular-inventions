@@ -1,0 +1,165 @@
+<!--Slider-->
+<section>
+    <div class="slider-wrapper">
+        <fraction-slider slider-control="{{sliderControl}}" slider-data="sliderData"></fraction-slider>
+    </div>
+
+</section>
+<!--Buy Now-->
+<section class="box-action">
+    <div class="container">
+        <div class="box-action-head">
+            <p class="lead">Implement an action bar at any section of the page!</p>
+        </div>
+        <div class="button skin-blue">
+            <a target="_blank" href="">BUY NOW</a>
+        </div>
+    </div>
+</section>
+<!--Service-->
+<section class="content_info">
+    <div class="padding-both-50">
+        <div class="container">
+            <!-- Icon Big -->
+            <i class="fa fa-cogs icon-section"></i>
+            <!-- End Icon Big -->
+            <!-- Titles Heading -->
+            <div class="titles-heading">
+                <div class="line"></div>
+                <h1>{{serviceData.h1}}
+                            <span>
+                              {{serviceData.span}}
+                            </span>
+                </h1>
+            </div>
+            <!-- End Titles Heading -->
+            <!-- Row fuid-->
+            <div class="row padding-top-50">
+                <!-- Item service - 01 -->
+                <div class="col-md-4 col-sm-6 col-xs-6 hvr-grow" ng-repeat="x in serviceData.data">
+                    <div class="{{x.class}}">
+                        <div class="row head-service">
+                            <div class="col-md-2 col-sm-2 col-xs-2">
+                                <i class="{{x.icon}}"></i>
+                            </div>
+                            <div class="col-md-10 col-sm-10 col-xs-10">
+                                <h4>{{x.h4}}</h4>
+                                <h5>{{x.h5}}</h5>
+                            </div>
+                        </div>
+                        <p>{{x.p}}</p>
+                    </div>
+                </div>
+                <!-- End Item service-->
+            </div>
+            <!-- End Row fuid-->
+        </div>
+        <!-- End Container-->
+    </div>
+</section>
+<!--Box Information-->
+<section class="content_info">
+    <!-- Parallax Background -->
+    <div class="parallax"></div>
+    <!-- Parallax Background -->
+
+    <!-- Content Parallax-->
+    <section class="opacy_bg_02 padding-both-30 boxes">
+        <div class="container">
+            <div class="row">
+                <!-- Item Boxes Info -->
+                <div class="col-md-3 col-sm-6 col-xs-6" ng-repeat="x in boxInfo">
+                    <div class="boxes-info hvr-grow">
+                        <h3>{{x.h3}}<i class="{{x.icon}}"></i></h3>
+                        <h5>{{x.h5}}</h5>
+                        <p>{{x.p}}</p>
+                    </div>
+                </div>
+                <!-- End Item Boxes Info -->
+            </div>
+        </div>
+    </section>
+    <!-- End Content Parallax-->
+</section>
+<!--Viewers-->
+<section class="content_info">
+    <div class="padding-both-50 viewers">
+        <div class="container">
+            <div class="row">
+                <!-- title-downloads -->
+                <h1 class="title-downloads">
+                    <span class="logo-clients">Roken</span> has been downloaded
+                            <span class="responsive-numbers">
+                                <span>2</span>
+                                ,
+                                <span>3</span>
+                                <span>8</span>
+                                <span>9</span>
+                                ,
+                                <span>5</span>
+                                <span>1</span>
+                                <span>8</span>
+                            </span>
+                    times.
+                </h1>
+                <!-- End title-downloads -->
+
+                <!-- subtitle-downloads -->
+                <div class="subtitle-downloads">
+                    <div class="line"></div>
+                    <h4>Best Service With <i class="fa fa-star"></i> By</h4>
+                </div>
+                <!-- End subtitle-downloads -->
+
+                <!-- Image Clients Downloads -->
+                <ul class="image-clients-downloads">
+                    <li><img alt="" src="http://farm6.staticflickr.com/5693/23251917722_610ba16322_b.jpg"></li>
+                    <li><img alt="" src="http://farm6.staticflickr.com/5693/23251917722_610ba16322_b.jpg"></li>
+                    <li><img alt="" src="http://farm6.staticflickr.com/5693/23251917722_610ba16322_b.jpg"></li>
+                    <li><img alt="" src="http://farm6.staticflickr.com/5693/23251917722_610ba16322_b.jpg"></li>
+                    <li><img alt="" src="http://farm6.staticflickr.com/5693/23251917722_610ba16322_b.jpg"></li>
+                    <li><img alt="" src="http://farm6.staticflickr.com/5693/23251917722_610ba16322_b.jpg"></li>
+                    <li><img alt="" src="http://farm6.staticflickr.com/5693/23251917722_610ba16322_b.jpg"></li>
+                </ul>
+                <!-- End Image Clients Downloads -->
+            </div>
+        </div>
+    </div>
+</section>
+<!--Clients-->
+<section class="content_info">
+    <!-- Parallax Background -->
+    <div class="parallax"></div>
+    <!-- Parallax Background -->
+
+    <!-- Content Parallax-->
+    <section class="opacy_bg_02 padding-both-50 sponsors">
+        <div class="container">
+            <h2 class="title-resalt">We have  earned the trust of <span> 25,869 </span>customers , including  these fine  companies</h2>
+            <owl-carousel carousel-control="{{carouselControl}}" carousel-data="carouselData"></owl-carousel>
+            <div class="circle">
+                <i class="fa fa-thumbs-up"></i>
+            </div>
+        </div>
+    </section>
+    <!-- End Content Parallax-->
+</section>
+<!--Responsive Info-->
+<section class="content_info">
+    <div class="padding-top-50 padding-bottom-30 pattern-important-info important-info">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 col-sm-9 col-xs-9">
+                    <h1><span>Roker</span> is incredibly beautiful and fully responsive.</h1>
+
+                    <p class="lead">We bring a personal and effective approach to every project we work on, which is why
+                        our clients love us and why they keep coming back.”</p>
+                    <a href="#" class="btn btn-lg animated bounceInUp">View More</a>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-3 html5">
+                    <i class="fa fa-html5"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

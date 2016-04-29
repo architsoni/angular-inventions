@@ -24,15 +24,8 @@ module.exports = function (grunt) {
                 files: [
                     {
                         expand: true,
-                        src: 'view/login/loginController.js',
-                        dest: 'config/',
-                        flatten: true,
-                        filter: 'isFile'
-                    },
-                    {
-                        expand: true,
-                        src: 'view/home/homeController.js',
-                        dest: 'config/',
+                        src: 'public/view/**/*.js',
+                        dest: 'public/config/controller/',
                         flatten: true,
                         filter: 'isFile'
                     }
@@ -45,7 +38,7 @@ module.exports = function (grunt) {
             options: {
                 reporter: require('jshint-stylish')
             },
-            all: ['Grunfile.js', 'config/**/*.js']
+            all: ['Grunfile.js', 'public/config/mainController.js', 'public/config/**/*.js', 'public/view/**/*.js']
         },
 
         // configure uglify to minify js files -------------------------------------
@@ -55,9 +48,9 @@ module.exports = function (grunt) {
             },
             build: {
                 files: {
-                    'dist/js/configController.min.js': ['config/mainController.js', 'config/homeController.js', 'config/loginController.js'],
-                    'dist/js/configDirective.min.js': ['config/appHeader.js','config/appFooter.js', 'config/appLoader.js','config/appCarousel.js'],
-                    'dist/js/configService.min.js': ['config/mainService.js']
+                    'build/js/configController.min.js': ['public/config/mainController.js', 'public/view/**/*.js'],
+                    'build/js/configDirective.min.js': ['public/config/directive/*.js'],
+                    'build/js/configService.min.js': ['public/config/service/*.js']
                 }
             }
         },
@@ -69,26 +62,35 @@ module.exports = function (grunt) {
             },
             build: {
                 files: {
-                    'dist/css/style.min.css': ['assets/css/style.css', 'assets/css/loader.css', 'assets/css/header.css', 'assets/css/footer.css', 'assets/css/menubar.css', 'assets/css/slider.css', 'assets/css/home.css']
+                    'build/css/style.min.css': ['public/assets/css/style.css', 'public/assets/css/*.css']
                 }
             }
         },
 
         // configure watch to auto update ------------------------------------------
         watch: {
-            scripts: {
-                files: 'src/**/*.js',
+            //copyFile: {
+                //files: ['public/view/**/*.js'],
+                //tasks: ['copy']
+            //},
+			scripts: {
+                files: ['public/config/mainController.js', 'public/config/directive/*.js', 'public/config/service/*.js', 'public/view/**/*.js'],
                 tasks: ['jshint', 'uglify']
+            },
+			css: {
+                files: ['public/assets/css/*.css'],
+                tasks: ['cssmin'],
+				options: {
+					// Start a live reload server on the default port 35729 
+					livereload: true,
+				}
             }
-        },
-
-       
+        },     
 
         connect: {
             server: {
                 options: {
-                    port: 9001,
-                    keepalive: true
+                    port: 9001
                 }
             }
         }
@@ -108,7 +110,9 @@ module.exports = function (grunt) {
     // CREATE TASKS ==============================================================
 
     grunt.registerTask('build', ['bower:install']);
+	
+	//grunt.registerTask('watch', ['watch:copy']);
 
-    grunt.registerTask('default', ['copy','jshint', 'uglify', 'cssmin', 'connect']);
+    grunt.registerTask('start', ['jshint', 'uglify', 'cssmin', 'connect', 'watch']);
 
 };

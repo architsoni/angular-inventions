@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "dependencies": {
     "jquery": "latest",
-    "angular": "1.5.0",
-    "angular-route": "1.5.0",
-    "angular-cookies": "1.5.0",
-    "angular-resource": "1.5.0",
-    "satellizer": "1.5.0"
-  }
+    "angular": "~1.4.7",
+	"bootstrap":"~3.0.2",
+	"font-awesome": "~4.4.0",
+    "angular-route": "~1.4.7",
+    "angular-cookies": "~1.4.7",
+    "angular-resource": "~1.4.7",
+    "angular-sanitize": "~1.4.7"
+  },
+  "devDependencies": {}
 }

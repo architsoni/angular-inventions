@@ -4,7 +4,7 @@
     function appFooter() {
         var directive = {
             restrict: 'E',
-            templateUrl: 'src/layout/footer.html',
+            templateUrl: 'view/layout/footer.html',
             controller: ExampleController
         };
 

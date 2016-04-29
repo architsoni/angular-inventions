@@ -4,7 +4,7 @@
     function appLoader() {
         var directive = {
             restrict: 'E',
-            templateUrl: 'src/layout/loader.html',
+            templateUrl: 'view/layout/loader.html',
             controller: ExampleController
         };
 

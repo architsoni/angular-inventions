@@ -4,7 +4,7 @@
     function appHeader() {
         var directive = {
             restrict: 'E',
-            templateUrl: 'src/layout/header.html',
+            templateUrl: 'view/layout/header.html',
            /* scope: {
                 max: '='
             },

@@ -5,7 +5,7 @@
     });
 
     //module for myApp decide route/controller/service/directive
-    angular.module('myApps', ['ngCookies', 'ngRoute', 'fraction-slider']);
+    angular.module('myApps', ['ngCookies', 'ngRoute']);
 
     angular.module('myApps').constant('constantForDynamicChange', {
         ORDER_CREATED: 'event_order_created',
@@ -19,7 +19,7 @@
     function config($routeProvider) {
         $routeProvider
             .when('/home', {
-                templateUrl: 'src/view/home/home.html',
+                templateUrl: 'view/home/home.html',
                 controller: 'homeController',
                 access: {
                     requiresBackground: true,
@@ -28,7 +28,7 @@
                 }
             })
             .when('/login', {
-                templateUrl: 'src/view/login/login.html',
+                templateUrl: 'view/login/login.html',
                 controller: 'loginController',
                 controllerAs: 'login',
                 access: {

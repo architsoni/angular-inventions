@@ -7,6 +7,16 @@ module.exports = function (grunt) {
         // get the configuration info from package.json ----------------------------
         // this way we can use things like name and version (pkg.name)
         pkg: grunt.file.readJSON('package.json'),
+		
+		// install source file of angular js
+		bower: {
+            install: {
+                options: {
+                    targetDir: 'source',
+					cleanBowerDir: true
+                }
+            }
+        },
 
         // copy js files -----------------------------------
         copy: {
@@ -14,15 +24,15 @@ module.exports = function (grunt) {
                 files: [
                     {
                         expand: true,
-                        src: 'src/view/login/loginController.js',
-                        dest: 'src/config/',
+                        src: 'view/login/loginController.js',
+                        dest: 'config/',
                         flatten: true,
                         filter: 'isFile'
                     },
                     {
                         expand: true,
-                        src: 'src/view/home/homeController.js',
-                        dest: 'src/config/',
+                        src: 'view/home/homeController.js',
+                        dest: 'config/',
                         flatten: true,
                         filter: 'isFile'
                     }
@@ -35,7 +45,7 @@ module.exports = function (grunt) {
             options: {
                 reporter: require('jshint-stylish')
             },
-            all: ['Grunfile.js', 'src/config/**/*.js']
+            all: ['Grunfile.js', 'config/**/*.js']
         },
 
         // configure uglify to minify js files -------------------------------------
@@ -45,9 +55,9 @@ module.exports = function (grunt) {
             },
             build: {
                 files: {
-                    'dist/js/configController.min.js': ['src/config/mainController.js', 'src/config/homeController.js', 'src/config/loginController.js'],
-                    'dist/js/configDirective.min.js': ['src/config/appHeader.js','src/config/appFooter.js', 'src/config/appLoader.js','src/config/appCarousel.js'],
-                    'dist/js/configService.min.js': ['src/config/mainService.js']
+                    'dist/js/configController.min.js': ['config/mainController.js', 'config/homeController.js', 'config/loginController.js'],
+                    'dist/js/configDirective.min.js': ['config/appHeader.js','config/appFooter.js', 'config/appLoader.js','config/appCarousel.js'],
+                    'dist/js/configService.min.js': ['config/mainService.js']
                 }
             }
         },
@@ -59,7 +69,7 @@ module.exports = function (grunt) {
             },
             build: {
                 files: {
-                    'dist/css/style.min.css': ['src/assets/css/style.css', 'src/assets/css/loader.css', 'src/assets/css/header.css', 'src/assets/css/footer.css', 'src/assets/css/menubar.css', 'src/assets/css/slider.css', 'src/assets/css/home.css']
+                    'dist/css/style.min.css': ['assets/css/style.css', 'assets/css/loader.css', 'assets/css/header.css', 'assets/css/footer.css', 'assets/css/menubar.css', 'assets/css/slider.css', 'assets/css/home.css']
                 }
             }
         },
@@ -72,13 +82,7 @@ module.exports = function (grunt) {
             }
         },
 
-        bower: {
-            install: {
-                options: {
-                    targetDir: 'source',
-                }
-            }
-        },
+       
 
         connect: {
             server: {

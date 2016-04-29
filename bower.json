@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "dependencies": {
     "jquery": "latest",
-    "angular": "latest",
-    "angular-route": "latest",
-    "angular-cookies": "latest",
-    "angular-resource": "latest",
-    "satellizer": "latest"
+    "angular": "1.5.0",
+    "angular-route": "1.5.0",
+    "angular-cookies": "1.5.0",
+    "angular-resource": "1.5.0",
+    "satellizer": "1.5.0"
   }
 }

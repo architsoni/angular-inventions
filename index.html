@@ -2,38 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <!--For Responsive-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!--For SEO-->
     <meta name="" content=""/>
-    <meta name="" content=""/>
-    <meta name="" content=""/>
-    <title>grunt</title>
-    <!--Source CSS-->
-    <link href="source/bootstrap/bootstrap.css" rel="stylesheet" type="text/css"/>
-    <link href="build/css/style.min.css" rel="stylesheet" type="text/css"/>
+
+    <title>AngularInvention</title>
+
+    <!--Css-->
+    <link href="build/vendor.min.css" rel="stylesheet" type="text/css"/>
+    <link href="build/app.min.css" rel="stylesheet" type="text/css"/>
+
     <!--Source Angular js-->
-    <script type="application/javascript" src="source/angular/angular.js"></script>
-    <script type="application/javascript" src="source/angular-cookies/angular-cookies.js"></script>
-    <script type="application/javascript" src="source/angular-route/angular-route.js"></script>
-    <script type="application/javascript" src="source/angular-resource/angular-resource.js"></script>
-    <script type="application/javascript" src="source/angular-sanitize/angular-sanitize.js"></script>
+    <script type="application/javascript" src="angular.min.js"></script>
+
     <!--Source Jquery-->
-    <script type="application/javascript" src="source/jquery/jquery.js"></script>
-    <script type="application/javascript" src="source/bootstrap/bootstrap.js"></script>
-    <!--Cotroller-->
-    <script type="application/javascript" src="build/js/configController.min.js"></script>
-    <script type="application/javascript" src="build/js/configDirective.min.js"></script>
-    <script type="application/javascript" src="build/js/configService.min.js"></script>
+    <script type="application/javascript" src="jquery.min.js"></script>
+
+    <!--App-->
+    <script type="application/javascript" src="build/vendor.min.js"></script>
+    <script type="application/javascript" src="build/app.min.js"></script>
+
+
 </head>
 <body>
 <app-loader></app-loader>
-
-
 <app-header id="menuBar"></app-header>
-
 <div ng-view=""></div>
-
 <app-footer id="footer"></app-footer>
 </body>
 </html>

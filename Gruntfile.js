@@ -1,57 +1,54 @@
+var distDir = 'dist/';
+var appDir = 'app/';
+var buildDir = 'build/';
+var sourceDir = 'source/';
+var appJsFiles = appDir + '**/*.js';
 module.exports = function (grunt) {
-
     // CONFIGURE GRUNT ===========================================================
-
     grunt.initConfig({
 
         // get the configuration info from package.json ----------------------------
         // this way we can use things like name and version (pkg.name)
         pkg: grunt.file.readJSON('package.json'),
-		
-		// install source file of angular js
-		bower: {
+        appsourceName: 'app',
+
+        // configure jshint to validate js files -----------------------------------
+        jshint: {
+            all: ['Gruntfile.js', appJsFiles]
+        },
+
+        // install source file of angular js
+        bower: {
             install: {
                 options: {
-                    targetDir: 'source',
-					cleanBowerDir: true
+                    targetDir: 'vendor',
+                    cleanBowerDir: true
                 }
             }
         },
 
-        // copy js files -----------------------------------
-        copy: {
-            main: {
-                files: [
-                    {
-                        expand: true,
-                        src: 'public/view/**/*.js',
-                        dest: 'public/config/controller/',
-                        flatten: true,
-                        filter: 'isFile'
-                    }
-                ],
-            },
-        },
-
-        // configure jshint to validate js files -----------------------------------
-        jshint: {
+        concat: {
             options: {
-                reporter: require('jshint-stylish')
-            },
-            all: ['Grunfile.js', 'public/config/mainController.js', 'public/config/**/*.js', 'public/view/**/*.js']
-        },
-
-        // configure uglify to minify js files -------------------------------------
-        uglify: {
-            options: {
-                banner: '/*\n <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> \n*/\n'
+                separator: '\n',
             },
             build: {
-                files: {
-                    'build/js/configController.min.js': ['public/config/mainController.js', 'public/view/**/*.js'],
-                    'build/js/configDirective.min.js': ['public/config/directive/*.js'],
-                    'build/js/configService.min.js': ['public/config/service/*.js']
-                }
+                files: [
+                    /* source concat */
+                    {
+                        src: [appDir + '**/*.module.js', appDir + '**/*.js'],
+                        dest: sourceDir + '<%=appsourceName%>.js'
+                    },
+                    /* vendor min-files concat */
+                    {
+                        src: ['vendor/angular.js', 'vendor/**/*.js'],
+                        dest: sourceDir + 'vendor.js'
+                    }
+                ]
+            },
+            dist: {
+                src: [distDir + 'vendor.min.js', distDir + '<%=appsourceName%>.min.js',
+                    distDir + '<%=ngtemplates.prod.dest%>'],
+                dest: distDir + '<%=pkg.name%>.min.js'
             }
         },
 
@@ -62,30 +59,78 @@ module.exports = function (grunt) {
             },
             build: {
                 files: {
-                    'build/css/style.min.css': ['public/assets/css/style.css', 'public/assets/css/*.css']
+                    'build/vendor.min.css': ['vendor/**/*.css'],
+                    'build/app.min.css': ['assets/css/style.css', 'assets/css/*.css']
                 }
+            }
+        },
+
+        // copy js files -----------------------------------
+        copy: {
+            main: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: buildDir,
+                        src: ['*min.js', '*.css'],
+                        dest: distDir
+                    }
+                ],
+            },
+        },
+        clean: {
+            build: [buildDir + '*', 'source/'],
+            dist: [distDir + '*']
+        },
+
+        // configure uglify to minify js files -------------------------------------
+        uglify: {
+            build: {
+                options: {
+                    banner: '/*\n <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> \n*/\n',
+                    mangle: true
+                },
+                files: [
+                    {
+                        src: sourceDir + 'vendor.js',
+                        dest: buildDir + 'vendor.min.js'
+                    }, {
+                        src: sourceDir + 'app.js',
+                        dest: buildDir + 'app.min.js'
+                    }
+                ]
+            }
+        },
+
+        jscs: {
+            options: {
+                config: '.jscsrc',
+                verbose: true,
+                preset: 'airbnb'
+            },
+            all: {
+                src: ['Gruntfile.js', 'app/**/*.js']
             }
         },
 
         // configure watch to auto update ------------------------------------------
         watch: {
-            //copyFile: {
-                //files: ['public/view/**/*.js'],
-                //tasks: ['copy']
-            //},
-			scripts: {
-                files: ['public/config/mainController.js', 'public/config/directive/*.js', 'public/config/service/*.js', 'public/view/**/*.js'],
-                tasks: ['jshint', 'uglify']
+            js: {
+                files: ['Gruntfile.js', appJsFiles],
+                tasks: ['jshint', 'uglify:build', 'concat:build'],
+                options: {
+                    livereload: true,
+                }
             },
-			css: {
-                files: ['public/assets/css/*.css'],
+            css: {
+                files: ['assets/css/*.css'],
                 tasks: ['cssmin'],
-				options: {
-					// Start a live reload server on the default port 35729 
-					livereload: true,
-				}
+                options: {
+                    // Start a live reload server on the default port 35729
+                    livereload: true,
+                }
             }
-        },     
+        },
 
         connect: {
             server: {
@@ -98,21 +143,31 @@ module.exports = function (grunt) {
     });
 
     // LOAD GRUNT PLUGINS ========================================================
-
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-bower-task');
+    grunt.loadNpmTasks('grunt-jscs');
 
     // CREATE TASKS ==============================================================
 
-    grunt.registerTask('build', ['bower:install']);
-	
-	//grunt.registerTask('watch', ['watch:copy']);
+    grunt.registerTask('install', ['bower:install']);
 
-    grunt.registerTask('start', ['jshint', 'uglify', 'cssmin', 'connect', 'watch']);
+    grunt.registerTask('build-dev', ['jshint', 'clean:build', 'concat:build', 'uglify:build', 'cssmin:build']);
+
+    grunt.registerTask('build-prod', ['build-dev', 'clean:dist',
+        'copy:dist', 'concat:dist']);
+
+    grunt.registerTask('default', ['build-dev', 'connect', 'watch']);
+
+    //grunt.registerTask('watch', ['watch:copy']);
+
+    //grunt.registerTask('start', ['jshint', 'uglify', 'cssmin', 'connect', 'watch']);
 
 };

@@ -1,14 +1,12 @@
 {
-  "name": "angular-invention",
-  "version": "0.1.0",
-  "dependencies": {
-    "jquery": "latest",
-	"bootstrap":"~3.0.2",
-    "angular-route": "~1.4.7",
-    /*"angular-ui-router": "0.3.1",*/
-    "angular-cookies": "~1.4.7",
-    "angular-resource": "~1.4.7",
-    "angular-sanitize": "~1.4.7"
-  },
-  "devDependencies": {}
+    "name": "AngularInvention",
+    "version": "1.0.1",
+    "dependencies": {
+        "bootstrap": "~3.0.2",
+        "angular-route": "~1.4.7",
+        "angular-cookies": "~1.4.7",
+        "angular-resource": "~1.4.7",
+        "angular-sanitize": "~1.4.7"
+    },
+    "devDependencies": {}
 }

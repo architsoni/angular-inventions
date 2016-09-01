@@ -1,2 +1,2 @@
 # angular-inventions
-Angular Js stuff like Projects, Example, Running Code, Research work etc.
+AngularJs research work for create best MVC + SPA structure.

@@ -1,7 +1,7 @@
 (function(){
     angular.module('app').directive('appLoader', function() {
         var loader = {
-            templateUrl: 'app/layout/loader/loader.html',
+            templateUrl: 'layout/loader/loader.html',
             controller: ExampleController,
             controllerAs: 'vm'
         };

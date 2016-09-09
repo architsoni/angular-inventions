@@ -12,25 +12,15 @@
     <title>AngularInvention</title>
 
     <!--Css-->
-    <link href="build/vendor.min.css" rel="stylesheet" type="text/css"/>
-    <link href="build/app.min.css" rel="stylesheet" type="text/css"/>
-
-    <!--Source Angular js-->
-    <script type="application/javascript" src="angular.min.js"></script>
-
-    <!--Source Jquery-->
-    <script type="application/javascript" src="jquery.min.js"></script>
+    <link href="@@buildVendorCss" rel="stylesheet" type="text/css"/>
+    <link href="@@buildAppCss" rel="stylesheet" type="text/css"/>
 
     <!--App-->
-    <script type="application/javascript" src="build/vendor.min.js"></script>
-    <script type="application/javascript" src="build/app.min.js"></script>
-
-
+    <script type="application/javascript" src="@@buildVendorJs"></script>
+    <script type="application/javascript" src="@@buildAppJs"></script>
 </head>
 <body>
-<app-loader></app-loader>
-<app-header id="menuBar"></app-header>
-<div ng-view=""></div>
-<app-footer id="footer"></app-footer>
+<app-header></app-header>
+<div ui-view autoscroll="true"></div>
 </body>
 </html>

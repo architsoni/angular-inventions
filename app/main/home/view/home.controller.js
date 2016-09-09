@@ -1,15 +1,15 @@
 (function () {
     angular.module('app').controller('homeController', homeController);
 
-    homeController.$inject = ['$scope', '$window'];
+    homeController.$inject = ['$scope', 'simpleObj'];
 
-    function homeController($scope, $window) {
+    function homeController($scope, simpleObj) {
 
         var vm = this;
-        vm.heading = "Home";
+        vm.heading = simpleObj.value;
 
 
-        $("#loader").fadeOut();
+        $('#loader').fadeOut();
 
 
     }

@@ -1,7 +1,7 @@
 (function(){
     angular.module('app').component('appFooter', function() {
         var footer = {
-            templateUrl: 'app/layout/footer/footer.html',
+            templateUrl: 'layout/footer/footer.html',
             controller: ExampleController,
             controllerAs: 'vm'
         };

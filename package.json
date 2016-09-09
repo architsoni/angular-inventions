@@ -15,7 +15,9 @@
     "grunt-contrib-cssmin": "latest",
     "grunt-contrib-watch": "latest",
 	"grunt-contrib-connect": "latest",
+	"grunt-browser-sync": "latest",
 	"grunt-bower-task": "latest",
+	"grunt-replace": "latest",
     "grunt-jscs": "^2.8.0"
   }
 }

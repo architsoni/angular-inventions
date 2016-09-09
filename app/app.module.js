@@ -9,7 +9,7 @@
         'app.dashboard',
 
         'ngCookies',
-        'ngRoute'
+        'ui.router'
     ]);
 
 })();

@@ -1,13 +1,17 @@
 (function () {
     angular.module('app').controller('homeController', homeController);
 
-    homeController.$inject = ['$scope', 'simpleObj'];
+    homeController.$inject = ['$scope', 'simpleObj','toaster'];
 
-    function homeController($scope, simpleObj) {
+    function homeController($scope, simpleObj,toaster) {
 
         var vm = this;
         vm.heading = simpleObj.value;
+        vm.click = clickFunction;
 
+        function clickFunction() {
+            toaster.pop('success', 'title', 'text');
+        }
 
         $('#loader').fadeOut();
 

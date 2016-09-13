@@ -5,8 +5,15 @@
         "bootstrap": "~3.0.2",
         "angular-ui-router": "0.3.1",
         "angular-cookies": "1.5.0",
+        "angular-touch": "1.5.0",
         "angular-resource": "1.5.0",
-        "angular-sanitize": "1.5.0"
+        "angular-sanitize": "1.5.0",
+        "angular-animate": "1.5.0",
+        "angular-bootstrap": "latest",
+        "ngmap": "latest",
+        "angular-utils-pagination": "latest",
+        "angular-xeditable": "latest",
+        "angularjs-toaster": "2.0.0"
     },
     "devDependencies": {}
 }

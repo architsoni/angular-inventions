@@ -41,8 +41,15 @@ module.exports = function (grunt) {
                     vendorDir + 'angular/*.js',
                     vendorDir + 'jquery/*.js',
                     vendorDir + 'angular-cookies/*.js',
+                    vendorDir + 'angular-touch/*.js',
+                    vendorDir + 'angular-animate/*.js',
                     vendorDir + 'angular-ui-router/*.js',
+                    vendorDir + 'angular-bootstrap/*.js',
                     vendorDir + 'angular-sanitize/*.js',
+                    vendorDir + 'ngmap/*.js',
+                    vendorDir + 'angularjs-toaster/*.js',
+                    vendorDir + 'angular-utils-pagination/*.js',
+                    vendorDir + 'angular-xeditable/*.js',
                     vendorDir + 'bootstarp/*.js'
                 ],
                 dest: sourceDir + 'vendor.js'
@@ -60,7 +67,7 @@ module.exports = function (grunt) {
             },
             buildVen: {
                 files: {
-                    'app/build/vendor.min.css': [vendorDir + '**/*.css'],
+                    'app/build/vendor.min.css': [vendorDir + '**/*.css',vendorDir + '**/*.min.css'],
                 }
             },
             build: {
@@ -156,7 +163,7 @@ module.exports = function (grunt) {
         },
 
         clean: {
-            build: [buildDir + 'app.min.js', buildDir + 'app.min.css'],
+            build: [buildDir],
             distCss: [distDir + 'assets/css/*'],
             distJs: [distDir + 'layout/**/*.js', distDir + 'main/**/*.js']
         },
@@ -191,7 +198,7 @@ module.exports = function (grunt) {
         // configure watch to auto update ------------------------------------------
         watch: {
             js: {
-                files: [mainDir + '*.html', appJsFiles],
+                files: [appDir + 'app.module.js', mainDir + '*.html', coreDir + '**/*.js', mainDir + '**/*.js', layoutDir + '**/*.js'],
                 tasks: ['jshint', 'concat:build', 'uglify:build'],
                 options: {
                     livereload: true,
@@ -253,13 +260,13 @@ module.exports = function (grunt) {
 
     // CREATE TASKS ==============================================================
 
-    grunt.registerTask('build-ven', ['concat:buildVen', 'uglify:buildVen', 'cssmin:buildVen']);
+    grunt.registerTask('build-ven', ['clean:build', 'concat:buildVen', 'uglify:buildVen', 'cssmin:buildVen']);
 
     grunt.registerTask('install', ['bower:install', 'build-ven']);
 
     grunt.registerTask('build-dev', ['replace:build', 'jshint', 'concat:build', 'uglify:build', 'cssmin:build']);
 
-    grunt.registerTask('build-prod', ['copy:build','clean:distCss','copy:dist', 'clean:distJs','replace:dist']);
+    grunt.registerTask('build-prod', ['copy:build', 'clean:distCss', 'copy:dist', 'clean:distJs', 'replace:dist']);
 
     grunt.registerTask('default', ['build-dev', 'connect', 'watch']);
     //grunt.registerTask('default', ['build-dev', 'browserSync', 'watch']);

@@ -1,9 +1,9 @@
 (function () {
     'use strict';
 
-    angular.module('app').constant('constantForDynamicChange', {
-        ORDER_CREATED: 'event_order_created',
-        INVENTORY_DEPLETED: 'event_inventory_depleted'
+    angular.module('app').constant('yopillz', {
+        IMAGE_PATH: 'app/assets/images/',
+        PAGINATION_TEMP: 'main/dashboard/pagination/dirPagination.tpl.html'
     });
 
 })();

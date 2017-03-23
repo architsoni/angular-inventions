@@ -2,7 +2,9 @@
     'use strict';
 
     angular.module('app', [
-        'app.home',
+        'app.signup',
+        'app.landing',
+        'app.contact',
         'ui.router',
         'ngCookies',
         'ngFileUpload',

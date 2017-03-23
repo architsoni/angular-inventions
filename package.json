@@ -5,6 +5,9 @@
   "description": "Grunt File Configuration of Viral",
   "dependencies": {
     "express": "^4.13.4",
+    "mysql": "^2.5.4",
+    "bcryptjs": "^2.4.0",
+    "body-parser": "^1.15.2",
     "grunt-express": "^1.4.1",
     "grunt-parallel": "^0.5.1"
   },

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="app">
+<html lang="en" ng-app="app" ng-controller="appController">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,13 +14,21 @@
     <script type="text/javascript" src="app.config.js"></script>
     <script type="text/javascript" src="app.run.js"></script>
     <script type="text/javascript" src="app.constant.js"></script>
+    <script type="text/javascript" src="app.controller.js"></script>
     <script type="text/javascript" src="app.service.js"></script>
-    <script type="text/javascript" src="views/home/home.module.js"></script>
-    <script type="text/javascript" src="views/home/home.controller.js"></script>
+    <script type="text/javascript" src="directives/date-picker/datePicker.directive.js"></script>
+    <script type="text/javascript" src="directives/window-height/windowHeight.directive.js"></script>
+    <script type="text/javascript" src="views/contact/contact.module.js"></script>
+    <script type="text/javascript" src="views/landing/landing.module.js"></script>
+    <script type="text/javascript" src="views/signup/signup.module.js"></script>
+    <script type="text/javascript" src="views/contact/contact.controller.js"></script>
+    <script type="text/javascript" src="views/landing/landing.controller.js"></script>
+    <script type="text/javascript" src="views/signup/signup.controller.js"></script>
     <!-- end auto template tags -->
 
+    <base href="/" />
 </head>
-<body>
+<body ng-class="{'sq-land-pg':isLanding}">
 <div ui-view></div>
 </body>
 </html>

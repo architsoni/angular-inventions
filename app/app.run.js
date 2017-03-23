@@ -12,6 +12,13 @@
                 //event.preventDefault();
                 // transitionTo() promise will be rejected with
                 // a 'transition prevented' error
+
+                console.log(toState);
+                if(toState.name === 'landing'){
+                    $rootScope.isLanding = true
+                }else{
+                    $rootScope.isLanding = false;
+                }
             });
 
         $rootScope.$on('$stateChangeSuccess',

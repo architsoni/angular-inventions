@@ -28,8 +28,8 @@ module.exports = function (grunt) {
             },
             all: [
                 root.grunt,
-                root.angular + '**/*.js',
-                root.views + '**/*.js'
+                root.views + '**/*.js',
+                root.views + '**/**/*.js'
             ],
 
         },
@@ -73,17 +73,6 @@ module.exports = function (grunt) {
         },
 
         // CONFIGURE LESS==================================================
-        less: {
-            build: {
-                src: root.views + '**/*.less',
-                dest: root.css + 'app.css',
-                options: {
-                    compress: true
-                }
-            }
-        },
-
-        // CONFIGURE LESS==================================================
         tags: {
             build: {
                 src: [
@@ -94,7 +83,10 @@ module.exports = function (grunt) {
                     root.app + '*.config.js',
                     root.app + '*.run.js',
                     root.app + '*.constant.js',
+                    root.app + '*.controller.js',
                     root.app + '*.service.js',
+                    root.directives + '**/*.directive.js',
+                    root.components + '**/*.components.js',
                     root.views + '**/*.module.js',
                     root.views + '**/*.controller.js',
                     root.views + '**/*.service.js',
@@ -112,6 +104,17 @@ module.exports = function (grunt) {
             build: {
                 files: {
                     'app/assets/css/vendor.min.css': [root.vendor + '**/*.css']
+                }
+            }
+        },
+
+        // CONFIGURE LESS==================================================
+        less: {
+            build: {
+                src: [root.views + 'app.less', root.views + '**/*.less'],
+                dest: root.css + 'app.css',
+                options: {
+                    compress: true
                 }
             }
         },
@@ -150,6 +153,7 @@ module.exports = function (grunt) {
                 files: [
                     root.app + '*.js',
                     root.views + '**/*.js',
+                    root.views + 'app.less',
                     root.views + '**/*.less'
                 ],
                 tasks: [
@@ -167,8 +171,8 @@ module.exports = function (grunt) {
             all: {
                 src: [
                     'Gruntfile.js',
-                    root.app + '**/*.js',
-                    root.views + '**/**/**/*.js',
+                    root.views + '*.js',
+                    root.views + '**/*.js'
                 ]
             }
         },
@@ -213,9 +217,9 @@ module.exports = function (grunt) {
 
     // CREATE TASKS ==============================================================
     grunt.registerTask('install', ['bower:install', 'tags:build', 'uglify:build', 'cssmin:build']);
-    grunt.registerTask('production', ['clean:dist', 'copy:folder', 'copy:html', 'clean:distfiles', 'jscs']);
+    //grunt.registerTask('production', ['clean:dist', 'copy:folder', 'copy:html', 'clean:distfiles', 'jscs']);
     grunt.registerTask('development', ['jshint', 'less:build', 'tags:build']);
-    grunt.registerTask('build', ['development', 'connect', 'watch']);
+    grunt.registerTask('build', ['development', 'express', 'watch']);
     grunt.registerTask('default', []);
 
 };
